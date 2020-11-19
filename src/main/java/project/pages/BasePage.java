@@ -2,7 +2,7 @@ package project.pages;
 
 import org.openqa.selenium.WebDriver;
 
-public class BasePage {
+public abstract class BasePage {
 
   //protected WebDriver variable (only classes in same folder (pages) will get driver)
   protected static WebDriver driver;
