@@ -31,7 +31,6 @@ Test #4
 2. Click on 'My account' icon
 3. Login to application
 4. From top menu select 'Components' -> 'Monitors'
-5. Click 'Add to Wish List' button for Apple Cinema 30"
-6. Samsung SyncMaster 941BW
-7. Click on 'My wish list on the top of the page'
-8. Check that 2 items exist in your wish list
+5. Click 'Add to Wish List' button for Apple Cinema 30" and Samsung SyncMaster 941BW
+6. Click on 'My wish list on the top of the page'
+7. Check that 2 items exist in your wish list
