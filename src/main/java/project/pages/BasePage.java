@@ -4,17 +4,17 @@ import org.openqa.selenium.WebDriver;
 
 public abstract class BasePage {
 
-  //protected WebDriver variable (only classes in same folder (pages) will get driver)
-  protected static WebDriver driver;
+    //protected WebDriver variable (only classes in same folder (pages) will get driver)
+    protected WebDriver driver;
 
-  //set driver for base page
-  public static void setDriver(WebDriver webDriver) {
-    driver = webDriver;
-  }
+    //set driver for base page
+    public void setDriver(WebDriver webDriver) {
+        driver = webDriver;
+    }
 
-  //method for get driver from any page
-  public static WebDriver getDriver() {
-    return driver;
-  }
+    //method for get driver from any page
+    public WebDriver getDriver() {
+        return driver;
+    }
 
 }

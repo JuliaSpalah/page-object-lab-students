@@ -2,10 +2,9 @@ package project.pages;
 
 public class MainPage extends BasePage {
 
-  public MainPage openMainPage() {
-    getDriver().get("https://demo.opencart.com/");
-    return this;
-  }
+    public void openMainPage() {
+        getDriver().get("https://demo.opencart.com/");
+    }
 
 
 }
