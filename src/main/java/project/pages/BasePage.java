@@ -1,5 +1,6 @@
 package project.pages;
 
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 
 public abstract class BasePage {
@@ -15,6 +16,9 @@ public abstract class BasePage {
     //method for get driver from any page
     public WebDriver getDriver() {
         return driver;
+    }
+    public JavascriptExecutor getJavaScriptExecutor() {
+        return (JavascriptExecutor) driver;
     }
 
 }
