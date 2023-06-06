@@ -52,7 +52,7 @@ public class BaseTest {
         }
         // екзекьютор виконує js code. Скролиться до brandsElement.
         // Міняти треба тільки його, якщо що, а решта - сталий код (не чіпати).
-        executor.executeScript("arguments[0].scrollIntoView(false);", brandsElement);
+        executor.executeScript("arguments[0].scrollIntoView(true);", brandsElement);
         // Почекати секунду
         TimeUnit.SECONDS.sleep(1);
         try {
@@ -91,6 +91,102 @@ public class BaseTest {
             List<WebElement> elements = contentElement.findElements(By.xpath(xpath));
             assertNotEquals(elements.size(), 0, "Element with xpath='" + xpath + " was not found in brands elements");
             assertFalse(elements.size() > 1, "Element with xpath='" + xpath + " is duplicated in brands elements");
+        }
+    }
+    @Test
+    public void testClickOnMyAccount() {
+        WebDriver driver = mainPage.getDriver();
+        JavascriptExecutor executor = mainPage.getJavaScriptExecutor();
+
+        mainPage.openMainPage();
+
+        try {
+            // в try одразу спроба для двох дій. Спочатку знайти елемент, а потім спробувати клікнути
+            WebElement myAccount = driver.findElement(By.xpath("//span[text()='My Account']"));
+            myAccount.click();
+        } catch (NoSuchElementException e) {
+            fail("There was no 'My Account' button found on page");
+            return;
+        } catch (ElementClickInterceptedException e) {
+            // Якщо не вдалось клікнути, то відповідний месседж
+            fail("Can't click on 'My Account' element");
+            return;
+        }
+
+        try {
+            WebElement register = driver.findElement(By.xpath("//a[@class='dropdown-item' and text()='Register']"));
+            register.click();
+        } catch (NoSuchElementException e) {
+            fail("There was no 'Register' button found on page");
+            return;
+        } catch (ElementClickInterceptedException e) {
+            // Якщо не вдалось клікнути, то відповідний месседж
+            fail("Can't click on 'Register' element");
+            return;
+        }
+
+        try {
+            WebElement firstNameField = driver.findElement(By.id("input-firstname"));
+            firstNameField.sendKeys("John");
+        } catch (NoSuchElementException e) {
+            fail("There was no 'First name' field found on page");
+            return;
+        }
+        try {
+            WebElement lastNameField = driver.findElement(By.id("input-lastname"));
+            lastNameField.sendKeys("Snow");
+        } catch (NoSuchElementException e) {
+            fail("There was no 'Last name' field found on page");
+            return;
+        }
+        try {
+            WebElement eMail = driver.findElement(By.id("input-email"));
+            eMail.sendKeys("john.snow@mail.com");
+        } catch (NoSuchElementException e) {
+            fail("There was no 'E-mail' field found on page");
+            return;
+        }
+        try {
+            WebElement eMail = driver.findElement(By.id("input-password"));
+            eMail.sendKeys("K0zadereza#123");
+        } catch (NoSuchElementException e) {
+            fail("There was no 'Password' field found on page");
+            return;
+        }
+
+        try {
+            WebElement agreeCheckbox = driver.findElement(By.xpath("//input[@name='agree']"));
+            executor.executeScript("arguments[0].scrollIntoView(true);", agreeCheckbox);
+            TimeUnit.SECONDS.sleep(1);
+            agreeCheckbox.click();
+        } catch (NoSuchElementException e) {
+            fail("There was no 'Agree' checkbox found on page");
+            return;
+        } catch (ElementClickInterceptedException e) {
+            // Якщо не вдалось клікнути, то відповідний месседж
+            fail("Can't click on 'Agree' checkbox element");
+            return;
+        } catch (InterruptedException e) {
+            fail("The waiting for 1 second was interrupted");
+            return;
+        }
+        try {
+            WebElement continueButton = driver.findElement(By.xpath("//button[text()='Continue']"));
+            continueButton.click();
+        } catch (NoSuchElementException e) {
+            fail("There was no 'Continue' button found on page");
+            return;
+        } catch (ElementClickInterceptedException e) {
+            // Якщо не вдалось клікнути, то відповідний месседж
+            fail("Can't click on 'Continue' button element");
+            return;
+        }
+
+        try {
+            driver.findElement(By.xpath("//title[text()='Welcome']"));
+        } catch (NoSuchElementException e) {
+            fail("There was no 'Welcome' title found on page");
+            return;
         }
     }
 }
