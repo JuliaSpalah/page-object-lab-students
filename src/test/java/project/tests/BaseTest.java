@@ -106,11 +106,9 @@ public class BaseTest {
             myAccount.click();
         } catch (NoSuchElementException e) {
             fail("There was no 'My Account' button found on page");
-            return;
         } catch (ElementClickInterceptedException e) {
             // Якщо не вдалось клікнути, то відповідний месседж
             fail("Can't click on 'My Account' element");
-            return;
         }
 
         try {
@@ -118,11 +116,9 @@ public class BaseTest {
             register.click();
         } catch (NoSuchElementException e) {
             fail("There was no 'Register' button found on page");
-            return;
         } catch (ElementClickInterceptedException e) {
             // Якщо не вдалось клікнути, то відповідний месседж
             fail("Can't click on 'Register' element");
-            return;
         }
 
         try {
@@ -130,28 +126,24 @@ public class BaseTest {
             firstNameField.sendKeys("John");
         } catch (NoSuchElementException e) {
             fail("There was no 'First name' field found on page");
-            return;
         }
         try {
             WebElement lastNameField = driver.findElement(By.id("input-lastname"));
             lastNameField.sendKeys("Snow");
         } catch (NoSuchElementException e) {
             fail("There was no 'Last name' field found on page");
-            return;
         }
         try {
             WebElement eMail = driver.findElement(By.id("input-email"));
             eMail.sendKeys("john.snow@mail.com");
         } catch (NoSuchElementException e) {
             fail("There was no 'E-mail' field found on page");
-            return;
         }
         try {
             WebElement eMail = driver.findElement(By.id("input-password"));
             eMail.sendKeys("K0zadereza#123");
         } catch (NoSuchElementException e) {
             fail("There was no 'Password' field found on page");
-            return;
         }
 
         try {
@@ -161,32 +153,26 @@ public class BaseTest {
             agreeCheckbox.click();
         } catch (NoSuchElementException e) {
             fail("There was no 'Agree' checkbox found on page");
-            return;
         } catch (ElementClickInterceptedException e) {
             // Якщо не вдалось клікнути, то відповідний месседж
             fail("Can't click on 'Agree' checkbox element");
-            return;
         } catch (InterruptedException e) {
             fail("The waiting for 1 second was interrupted");
-            return;
         }
         try {
             WebElement continueButton = driver.findElement(By.xpath("//button[text()='Continue']"));
             continueButton.click();
         } catch (NoSuchElementException e) {
             fail("There was no 'Continue' button found on page");
-            return;
         } catch (ElementClickInterceptedException e) {
             // Якщо не вдалось клікнути, то відповідний месседж
             fail("Can't click on 'Continue' button element");
-            return;
         }
 
         try {
             driver.findElement(By.xpath("//title[text()='Welcome']"));
         } catch (NoSuchElementException e) {
             fail("There was no 'Welcome' title found on page");
-            return;
         }
     }
 }
